@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+	<head>
+		<title>Andy's Test HTML Page</title>
+		<link rel="stylesheet" type="text/css" href="stdtheme.css" />
+	</head>
+	<body>
+		<div id="topnav" style="clear:both;width:960px;height:25px;">
+			<div style="float:left;width:400px;word-spacing:12px;font-size:90%;padding-left:15px;padding-top:6px;white-space:nowrap;text-align:left;">
+				<a class="topnav" href="x.html">XPage </a>
+				<a class="topnav" href="y.html">YPage </a>
+				<a class="topnav" href="y.html">ZPage </a>
+			</div>
+		</div>
+			
+		<h1>Header 1</h1>
+		<h2>Header 2</h2>
+		<h3>Header 3</h3>
+		<h4>Header 4</h4>
+		<h5>Header 5</h5>
+		
+		<div class="example_code">
+			Example code
+		</div>
+		<div id="colStrings" class="example_code">
+		</div>
+		<canvas id="myCanvas" width="400" height="400">
+			This text is displayed if your browser does not support HTML5 Canvas.
+		</canvas>
+	
+	<!-- Inline JavaScript to Draw on Canvas -->
+	<script type="text/javascript">
+		/*********************/
+		/* Declare functions */
+		/*********************/
+		var myCanvas = document.getElementById('myCanvas');
+		var myCanvasContext = myCanvas.getContext('2d');
+		
+		// Draw Rectangle
+		var drawRectangle = function(x,y,width,height,color)
+		{
+			myCanvasContext.fillStyle = color;
+			myCanvasContext.fillRect(x, y, width, height);
+		};
+		
+		// Call functions on load
+	    for (var pix = 0; pix < (myCanvas.width / 2); pix=pix+20)
+		{
+ 			var red = Math.floor(255 * (1-(pix/(myCanvas.width / 2)))); if (red > 255) { red = 255; } else if (red < 0) { red = 0; }
+			var green = Math.floor(255 * (1 - Math.abs(1-(2*pix/(myCanvas.width / 2))))); if (green > 255) { green = 255; } else if (green < 0) { green = 0; }
+			var blue = Math.floor(255 * (pix/(myCanvas.width / 2))); if (blue > 255) { blue = 255; } else if (blue < 0) { blue = 0; }
+			
+			var redHexStr = red.toString(16);
+			var greenHexStr = green.toString(16);
+			var blueHexStr = blue.toString(16);
+			
+			if (redHexStr.length == 1)   { rexHexStr   = '0' + redHexStr;   };
+			if (greenHexStr.length == 1) { greenHexStr = '0' + greenHexStr; };
+			if (blueHexStr.length == 1)  { blueHexStr  = '0' + blueHexStr;  };
+			 
+			var colString = '#' + redHexStr + greenHexStr + blueHexStr;
+			drawRectangle(pix,pix,400-(pix*2),400-(pix*2),colString); 
+		}
+	
+		
+	</script>
+	</body>
+	
+	
+</html>
